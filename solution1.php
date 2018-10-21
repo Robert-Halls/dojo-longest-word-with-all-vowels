@@ -73,6 +73,7 @@ $longestWords = [];
 
 if ($handle) {
 	while (($word = fgets($handle)) !== false) {
+	    $word = trim($word);
 		if(word_is_not_acceptable($word)) {
 			continue;
 		}
