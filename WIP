@@ -1,0 +1,32 @@
+<?php
+
+$imported_words_file = file('short_words.txt');
+
+$returned_array_from_word_file = array();
+
+$characters_counted = array();
+
+
+	foreach($imported_words_file as $individual_words) {
+		$returned_array_from_word_file[] = $individual_words;
+	}
+
+
+	function arrange_words_by_length($a,$b){
+			    return mb_strlen($b)-mb_strlen($a);
+			}
+			usort($returned_array_from_word_file,'arrange_words_by_length');
+
+
+	foreach($returned_array_from_word_file as $ordered_word) {
+		$characters_counted = substr_count($ordered_word, "g");
+
+		if ( $characters_counted < 1 ) {
+			echo "nope ";
+		} else {
+			echo "yep ";
+		}
+	}
+
+
+?>
